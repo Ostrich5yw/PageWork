@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-link to="/About">about</router-link>
+    <router-view/>                <!--显示界面内容，否则不会显示默认的界面(即router中"/"路径指向的界面) -->
   </div>
 </template>
 
