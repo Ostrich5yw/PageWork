@@ -51,19 +51,19 @@
                                                 </ul>
                                                 <div class="tab-content">
                                                     <div v-bind:class="markcontent1" data-content="signup">
-                                                        <form action="#">
+                                                        <form action="#" >
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <label for="usernamestu">用户名</label>
                                                                     <input type="text" class="form-control"
-                                                                           id="usernamestu">
+                                                                           id="usernamestu" v-model="usernamestu">
                                                                 </div>
                                                             </div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <label for="passwordstu">Password</label>
                                                                     <input type="password" class="form-control"
-                                                                           id="passwordstu">
+                                                                           id="passwordstu" v-model="passwordstu">
                                                                 </div>
                                                             </div>
 
@@ -71,7 +71,7 @@
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <input type="submit" class="btn btn-primary"
-                                                                           value="登录">
+                                                                           value="登录" @click="submitstu()">
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -97,7 +97,7 @@
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
                                                                     <input type="submit" class="btn btn-primary"
-                                                                           value="登录">
+                                                                           value="登录" @click="submittea">
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -142,8 +142,6 @@
 </template>
 
 <script>
-    // import mainjs from "../static/js/main"
-
     import MainPage from '@/assets/LogPage/MainPage.jpg'
     export default {
         name: "Login",
@@ -153,13 +151,31 @@
                 marktap1: 'active gtco-first',
                 marktap2: 'gtco-second',
                 markcontent1: 'tab-content-inner active',
-                markcontent2: 'tab-content-inner'
+                markcontent2: 'tab-content-inner',
+                usernamestu:'',
+                passwordstu:''
+            }
+        },
+        methods:{
+            submitstu(){
+                console.log("11111")
+                var ax = this
+                this.$axios({
+                    method: "POST",
+                    url: "http://localhost:8081/login",
+                    data: {
+                        username: ax.usernamestu,
+                        password: this.passwordstu
+                    }
+                }).then(function (response) {
+                    this.$message.error("nihoa")
+                })
+            },
+            submittea(){
+
             }
         }
 
-        // mounted() {
-        //    mainjs()
-        // }
     }
 </script>
 
