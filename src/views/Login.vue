@@ -1,4 +1,4 @@
-<title>mulu</title>
+<title xmlns="http://www.w3.org/1999/html">mulu</title>
 <template>
     <div id="Login">
         <div id="page">
@@ -11,10 +11,10 @@
                             </div>
                             <div class="col-xs-8 text-right menu-1">
                                 <ul>
-                                    <li><a href="features.html">Features</a></li>
-                                    <li><a href="tour.html">Tour</a></li>
+                                    <li><a href="features.html">首页</a></li>
+                                    <li><a href="tour.html">通知</a></li>
                                     <li class="has-dropdown">
-                                        <a href="#">Dropdown</a>
+                                        <a href="#">公共资源</a>
                                         <ul class="dropdown">
                                             <li><a href="#">Web Design</a></li>
                                             <li><a href="#">eCommerce</a></li>
@@ -22,8 +22,7 @@
                                             <li><a href="#">API</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="contact.html">关于</a></li>
                                     <li class="btn-cta"><a href="#"><span>Get started</span></a></li>
                                 </ul>
                             </div>
@@ -57,20 +56,31 @@
                                                                     <label for="usernamestu">用户名</label>
                                                                     <input type="text" class="form-control"
                                                                            id="usernamestu" v-model="usernamestu">
+<!--                                                                    <el-form-item label="用户名" prop="usernamestu">-->
+<!--                                                                        <el-input v-model="usernamestu" class="form-control"></el-input>-->
+<!--                                                                    </el-form-item>-->
                                                                 </div>
                                                             </div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
-                                                                    <label for="passwordstu">Password</label>
+                                                                    <label for="passwordstu">密码</label>
                                                                     <input type="password" class="form-control"
                                                                            id="passwordstu" v-model="passwordstu">
                                                                 </div>
                                                             </div>
-
+                                                            <div class="row form-group">
+                                                                <div class="col-md-5">
+                                                                    <label for="verifycodestu">验证码</label>
+                                                                    <input type="text" class="form-control" id="verifycodestu" v-model="verifyCode1temp">
+                                                                </div>
+                                                                <div class="col-md-5" style="float: right;top: 30px">
+                                                                    <div id="v_container1" style="float: right"></div>
+                                                                </div>
+                                                            </div>
 
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
-                                                                    <input type="submit" class="btn btn-primary"
+                                                                    <input class="btn btn-primary"
                                                                            value="登录" @click="submitstu()">
                                                                 </div>
                                                             </div>
@@ -83,21 +93,29 @@
                                                                 <div class="col-md-12">
                                                                     <label for="usernametea">用户名</label>
                                                                     <input type="text" class="form-control"
-                                                                           id="usernametea">
+                                                                           id="usernametea" v-model="usernametea">
                                                                 </div>
                                                             </div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
-                                                                    <label for="passwordtea">Password</label>
+                                                                    <label for="passwordtea">密码</label>
                                                                     <input type="password" class="form-control"
-                                                                           id="passwordtea">
+                                                                           id="passwordtea" v-model="passwordtea">
                                                                 </div>
                                                             </div>
-
+                                                            <div class="row form-group">
+                                                                <div class="col-md-5">
+                                                                    <label for="verifycodetea">验证码</label>
+                                                                    <input type="text" class="form-control" id="verifycodetea" v-model="verifyCode2temp">
+                                                                </div>
+                                                                <div class="col-md-5" style="float: right;top: 30px">
+                                                                    <div id="v_container2" style="float: right;"></div>
+                                                                </div>
+                                                            </div>
                                                             <div class="row form-group">
                                                                 <div class="col-md-12">
-                                                                    <input type="submit" class="btn btn-primary"
-                                                                           value="登录" @click="submittea">
+                                                                    <input  class="btn btn-primary"
+                                                                           value="登录" @click="submittea()">
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -142,38 +160,90 @@
 </template>
 
 <script>
+    import { GVerify } from '@/static/js/verifyCode'
     import MainPage from '@/assets/LogPage/MainPage.jpg'
     export default {
         name: "Login",
         data() {
             return{
                 MainPage: MainPage,
-                marktap1: 'active gtco-first',
-                marktap2: 'gtco-second',
-                markcontent1: 'tab-content-inner active',
-                markcontent2: 'tab-content-inner',
-                usernamestu:'',
-                passwordstu:''
+                marktap1: 'active gtco-first', marktap2: 'gtco-second', markcontent1: 'tab-content-inner active', markcontent2: 'tab-content-inner',
+                usernamestu:'', passwordstu:'', usernametea:'', passwordtea:'',
+                verifyCode1: null, verifyCode2: null, verifyCode1temp: null, verifyCode2temp: null,
             }
         },
         methods:{
             submitstu(){
-                console.log("11111")
                 var ax = this
                 this.$axios({
                     method: "POST",
-                    url: "http://localhost:8081/login",
+                    url: "http://localhost:8081/loginstu",
                     data: {
-                        username: ax.usernamestu,
-                        password: this.passwordstu
+                        stu_name: ax.usernamestu,
+                        stu_password: ax.passwordstu
                     }
                 }).then(function (response) {
-                    this.$message.error("nihoa")
+                    ax.$message(response);
                 })
+                var verifyCode = this.verifyCode1temp
+                var verifyFlag = this.verifyCode1.validate(verifyCode)
+                if (!verifyFlag) {
+                    this.$alert('验证码错误，请重新输入！', '提示', {
+                        confirmButtonText: '确定',
+                        type: 'warning',
+                        center: true
+                    }).then(() => {
+                        this.verifyCode1temp=null
+                        this.usernamestu=""
+                        this.passwordstu=""
+                    })
+                    return;
+                } else {
+                    ax.$notify({
+                        title: '系统提示',
+                        message: '验证码输入正确',
+                        type: 'success'
+                    })
+                }
             },
             submittea(){
+                var ax = this
+                this.$axios({
+                    method: "POST",
+                    url: "http://localhost:8081/logintea",
+                    data: {
+                        tea_name: ax.usernametea,
+                        tea_password: ax.passwordtea
+                    }
+                }).then(function (response) {
+                    ax.$message(response);
+                })
 
+                var verifyCode = this.verifyCode2temp
+                var verifyFlag = this.verifyCode2.validate(verifyCode)
+                if (!verifyFlag) {
+                    this.$alert('验证码错误，请重新输入！', '提示', {
+                        confirmButtonText: '确定',
+                        type: 'warning',
+                        center: true
+                    }).then(() => {
+                        this.verifyCode2temp=null
+                        this.usernametea=""
+                        this.passwordtea=""
+                    })
+                    return;
+                } else {
+                    ax.$notify({
+                        title: '系统提示',
+                        message: '验证码输入正确',
+                        type: 'success'
+                    })
+                }
             }
+        },
+        mounted () {
+            this.verifyCode1 = new GVerify('v_container1')
+            this.verifyCode2 = new GVerify('v_container2')
         }
 
     }

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link to="/About">about</router-link>
+<!--    <router-link to="/About">about</router-link>-->
     <router-view/>                <!--显示界面内容，否则不会显示默认的界面(即router中"/"路径指向的界面) -->
   </div>
 </template>
