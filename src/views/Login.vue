@@ -183,7 +183,9 @@
                         stu_password: ax.passwordstu
                     }
                 }).then(function (response) {
-                    ax.$message(response);
+                    console.log(response.data)
+                    ax.$store.commit("updataStu", response.data);
+                    ax.$router.push("/StuHome");
                 })
                 var verifyCode = this.verifyCode1temp
                 var verifyFlag = this.verifyCode1.validate(verifyCode)

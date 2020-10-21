@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>
+        L2Dwidget.init({
+            "model": {
+                //jsonpath控制显示那个小萝莉模型，下面这个就是我觉得最可爱的小萝莉模型，替换时后面名字也要替换掉
+                jsonPath: "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json",
+                "scale": 1
+            },
+            "display": {
+                "position": "right", //看板娘的表现位置
+                "width": 100,  //小萝莉的宽度
+                "height": 200, //小萝莉的高度
+                "hOffset": 400,
+                "vOffset": -40
+            },
+            "mobile": {
+                "show": true,
+                "scale": 0.5
+            },
+            "react": {
+                "opacityDefault": 0.7,
+                "opacityOnHover": 0.2
+            }
+        });
+    </script>
+    <style type="text/css">
+        body{
+            background: url("../assets/img/blackboard.jpg") no-repeat 398px 110px;
+            background-size: 900px 600px;
+        }
+        table{
+            border-collapse: collapse;
+            width: 800px;
+            height: 400px;
+            margin: 220px 0 0 440px;
+            border-color: yellow;
+        }
+        td{
+            color: aqua;
+        }
+        th{
+            text-align: center;
+            color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<table border="1px">
+    <tbody>
+    <tr>
+        <th colspan="2"></th>
+        <th>星期一</th>
+        <th>星期二</th>
+        <th>星期三</th>
+        <th>星期四</th>
+        <th>星期五</th>
+        <th>星期六</th>
+        <th>星期日</th>
+    </tr>
+    <tr>
+        <th rowspan="2">上午</th>
+        <td>9:00-10:30</td>
+        <td>语文</td>
+        <td>数学</td>
+        <td>历史</td>
+        <td>化学</td>
+        <td>英语</td>
+        <td>地理</td>
+        <td>政治</td>
+    </tr>
+    <tr>
+        <td>11:00-11:30</td>
+        <td>语文</td>
+        <td>数学</td>
+        <td>历史</td>
+        <td>化学</td>
+        <td>英语</td>
+        <td>地理</td>
+        <td>政治</td>
+    </tr>
+    <tr>
+        <th colspan="9">中午(11:30-14:00)</th>
+    </tr>
+    <tr>
+        <th rowspan="2">下午</th>
+        <td>14:00-16:30</td>
+        <td>语文</td>
+        <td>数学</td>
+        <td>历史</td>
+        <td>化学</td>
+        <td>英语</td>
+        <td>地理</td>
+        <td>政治</td>
+    </tr>
+    <tr>
+        <td>17:00-17:30</td>
+        <td>语文</td>
+        <td>数学</td>
+        <td>历史</td>
+        <td>化学</td>
+        <td>英语</td>
+        <td>地理</td>
+        <td>政治</td>
+    </tr>
+    <tr>
+        <th colspan="9">休息</th>
+    </tr>
+    <tr>
+        <th>晚上</th>
+        <td>19:30-21:00</td>
+        <td>语文</td>
+        <td>数学</td>
+        <td>历史</td>
+        <td>化学</td>
+        <td>英语</td>
+        <td>地理</td>
+        <td>政治</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

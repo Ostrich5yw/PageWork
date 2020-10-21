@@ -5,15 +5,21 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import VueAxios from "vue-axios"
+import Vuex from 'vuex'
+import VueI18n from 'vue-i18n';
+import { messages } from './components/common/i18n';
+import './static/css/icon.css';
+import './components/common/directives';
+import 'babel-polyfill';
+// import VueAxios from "vue-axios"
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI)
+Vue.use(ElementUI);
+Vue.use(Vuex);
 // Vue.use(VueAxios, axios)
 
 Vue.prototype.$axios = axios
-
 
 new Vue({
   router,
