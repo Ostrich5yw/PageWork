@@ -61,7 +61,7 @@ export default {
     },
     computed: {
         username() {
-            let username = this.$store.getters.getStu.realname;
+            let username = this.$store.getters.getStu.stu_realname;
             return username;
         }
     },

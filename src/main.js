@@ -20,7 +20,6 @@ Vue.use(Vuex);
 // Vue.use(VueAxios, axios)
 
 Vue.prototype.$axios = axios
-
 new Vue({
   router,
   store,

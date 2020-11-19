@@ -114,21 +114,21 @@ const routes = [
         meta: { title: '403' }
       },
       {
-        path: '/donate',
-        component: () => import(/* webpackChunkName: "donate" */ '../components/page/Donate.vue'),
-        meta: { title: '支持作者' }
+        path: '/PersonalInformation',
+        component: () => import(/* webpackChunkName: "PersonalInformation" */ '../components/page/PersonalInformation.vue'),
+        meta: { title: '个人信息' }
       }
     ]
   },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })
 router.beforeEach(function (to, from, next) {
-  if (to.path === "/dashboard" && store.state.StuBean.realname === '')
+  if (to.path === "/dashboard" && store.state.StudentBean.stu_name === '')
     router.push({path:'/Login'});
   next();
 });

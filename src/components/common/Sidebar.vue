@@ -147,8 +147,8 @@ export default {
                 },
                 {
                     icon: 'el-icon-lx-redpacket_fill',
-                    index: '/donate',
-                    title: '支持作者'
+                    index: '/PersonalInformation',
+                    title: '个人信息'
                 }
             ]
         };
