@@ -50,6 +50,7 @@
 </template>
 <script>
 import bus from '../common/bus';
+import store from "../../store";
 export default {
     data() {
         return {
@@ -61,7 +62,7 @@ export default {
     },
     computed: {
         username() {
-            let username = this.$store.getters.getStu.stu_realname;
+            let username = store.state.TeacherBean.tea_name === ''?this.$store.getters.getStu.stu_name:this.$store.getters.getTea.tea_name;
             return username;
         }
     },
@@ -69,18 +70,40 @@ export default {
         // 用户名下拉菜单选择事件
         handleCommand(command) {
             if (command == 'loginout') {
-                sessionStorage.removeItem('StuBean');
-                var StuBean = {
-                    stu_id:'',
-                        realname:'',
+                if(store.state.TeacherBean.tea_name === '') {
+                    sessionStorage.removeItem('StuBean');
+                    var StuBean = {
+                        stu_id:'',
+                        stu_realname:'',
                         stu_name:'',
                         stu_password:'',
                         stu_signinyear:'',
+                        stu_autorization:'',
+                        stu_mobilephone:'',
+                        stu_email:'',
                         college_id:'',
-                        tea_id:'',
+                        class_id:'',
+                        school_id:'',
                         appearance:''
+                    }
+                    this.$store.commit("updataStu", StuBean)
+                }else{
+                    sessionStorage.removeItem('TeaBean');
+                    var TeaBean = {
+                        tea_id:'',
+                            tea_realname:'',
+                            tea_name:'',
+                            tea_password:'',
+                            tea_autorization:'',
+                            tea_mobilephone:'',
+                            tea_email:'',
+                            college_id:'',
+                            class_id:'',
+                            school_id:'',
+                            appearance:''
+                    }
+                    this.$store.commit("updataTea", TeaBean)
                 }
-                this.$store.commit("updataStu", StuBean)
                 this.$router.push('/login');
             }
         },

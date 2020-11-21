@@ -443,21 +443,9 @@
                         })
                     }
                 })
-
             },
-            submittea(){
+            submittea() {
                 var ax = this
-                this.$axios({
-                    method: "POST",
-                    url: "http://localhost:8090/logintea",
-                    data: {
-                        tea_name: ax.usernametea,
-                        tea_password: ax.passwordtea
-                    }
-                }).then(function (response) {
-                    ax.$message(response);
-                })
-
                 var verifyCode = this.verifyCode2temp
                 var verifyFlag = this.verifyCode2.validate(verifyCode)
                 if (!verifyFlag) {
@@ -466,18 +454,43 @@
                         type: 'warning',
                         center: true
                     }).then(() => {
-                        this.verifyCode2temp=null
-                        this.usernametea=""
-                        this.passwordtea=""
+                        this.verifyCode2temp = null
+                        this.usernametea = ""
+                        this.passwordtea = ""
                     })
-                    return;
-                } else {
-                    ax.$notify({
-                        title: '系统提示',
-                        message: '验证码输入正确',
-                        type: 'success'
-                    })
+                    return;                                 //因为是async=false,这里验证码错误就会返回，不会执行下面的axios请求
                 }
+                this.$axios({
+                    method: "POST",
+                    url: "http://localhost:8090/logintea",
+                    data: {
+                        tea_name: ax.usernametea,
+                        tea_password: ax.passwordtea,
+                        remember: ax.remember
+                    }
+                }).then(function (response) {
+                    console.log(response)
+                    ax.$store.commit("updataTea", response.data.tea);
+                    if (response.data.msg == "success") {
+                        ax.$router.push("/TeaHome");
+                    } else if (response.data.msg == "用户名错误") {
+                        ax.$alert('用户名错误，请重新输入！', '提示', {
+                            confirmButtonText: '确定',
+                            type: 'warning',
+                            center: true
+                        }).then(() => {
+                            ax.$router.go(0)
+                        })
+                    } else if (response.data.msg == "密码错误") {
+                        ax.$alert('密码错误，请重新输入！', '提示', {
+                            confirmButtonText: '确定',
+                            type: 'warning',
+                            center: true
+                        }).then(() => {
+                            ax.$router.go(0)
+                        })
+                    }
+                })
             },
         },
         created() {

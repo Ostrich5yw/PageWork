@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import Vuex from 'vuex'
+
 import VueI18n from 'vue-i18n';
 import { messages } from './components/common/i18n';
 import './static/css/icon.css';

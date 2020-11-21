@@ -30,142 +30,139 @@
                 </el-card>
             </el-col>
             <el-col :span="16">
-                <el-row :gutter="20" class="mgb20">
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-1">
-                                <i class="el-icon-lx-people grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">1234</div>
-                                    <div>用户访问量</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-2">
-                                <i class="el-icon-lx-notice grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">321</div>
-                                    <div>系统消息</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-card shadow="hover" :body-style="{padding: '0px'}">
-                            <div class="grid-content grid-con-3">
-                                <i class="el-icon-lx-goods grid-con-icon"></i>
-                                <div class="grid-cont-right">
-                                    <div class="grid-num">5000</div>
-                                    <div>数量</div>
-                                </div>
-                            </div>
-                        </el-card>
-                    </el-col>
-                </el-row>
-                <el-card shadow="hover" style="height:503px;">
-                    <div slot="header" class="clearfix" style="text-align:center">
-                        <span>课程表</span>
+                <el-card shadow="hover" style="height:623px;" :body-style="{padding: '0px'}" >
+                    <div slot="header" class="clearfix" style="text-align:center;">
+                        <span style="font-family: PingFang SC;font-size: larger;font-style: italic;float: left">
+                            今日课程
+                        </span>
+                        <span style="font-family: PingFang SC;font-size: larger;font-style: italic;float: right">{{weather.date}}({{weather.week}})
+                                <span style="margin-left: 10px">温度:{{weather.tem}}°C</span>
+                                <span style="margin-left: 20px;margin-right: 10px">天气质量:{{weather.air_level}}</span>
+                                <el-image :src="weather.wea_img" style="vertical-align: middle;width: 30px;margin-top: 6px"></el-image>
+                            </span>
                     </div>
-                    <div class="body" style="width: 100%;height: 400px">
-                    <table border="1px" width="90%" style="height: 300px;position: relative;left: 45px;top: 50px">
-                        <tbody>
-                        <tr>
-                            <th colspan="2"></th>
-                            <th>星期一</th>
-                            <th>星期二</th>
-                            <th>星期三</th>
-                            <th>星期四</th>
-                            <th>星期五</th>
-                            <th>星期六</th>
-                            <th>星期日</th>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">上午</th>
-                            <td>9:00-10:30</td>
-                            <td>语文</td>
-                            <td>数学</td>
-                            <td>历史</td>
-                            <td>化学</td>
-                            <td>英语</td>
-                            <td>地理</td>
-                            <td>政治</td>
-                        </tr>
-                        <tr>
-                            <td>11:00-11:30</td>
-                            <td>语文</td>
-                            <td>数学</td>
-                            <td>历史</td>
-                            <td>化学</td>
-                            <td>英语</td>
-                            <td>地理</td>
-                            <td>政治</td>
-                        </tr>
-                        <tr>
-                            <th colspan="9">中午(11:30-14:00)</th>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">下午</th>
-                            <td>14:00-16:30</td>
-                            <td>语文</td>
-                            <td>数学</td>
-                            <td>历史</td>
-                            <td>化学</td>
-                            <td>英语</td>
-                            <td>地理</td>
-                            <td>政治</td>
-                        </tr>
-                        <tr>
-                            <td>17:00-17:30</td>
-                            <td>语文</td>
-                            <td>数学</td>
-                            <td>历史</td>
-                            <td>化学</td>
-                            <td>英语</td>
-                            <td>地理</td>
-                            <td>政治</td>
-                        </tr>
-                        <tr>
-                            <th colspan="9">休息</th>
-                        </tr>
-                        <tr>
-                            <th>晚上</th>
-                            <td>19:30-21:00</td>
-                            <td>语文</td>
-                            <td>数学</td>
-                            <td>历史</td>
-                            <td>化学</td>
-                            <td>英语</td>
-                            <td>地理</td>
-                            <td>政治</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <el-row :gutter="20" class="mgb20" style="margin: 0px">
+                        <el-col :span="8">
+                            <el-card shadow="hover" :body-style="{padding: '0px'}">
+                                <div class="grid-content grid-con-1">
+                                    <i class="el-icon-lx-people grid-con-icon">上午<hr>0节</i>
+                                    <!--                                <div class="grid-con-icon"></div>-->
+                                    <div class="grid-cont-right">
+                                        <div class="grid-num"></div>
+                                        <div style="float: left">课程1:</div><br>
+                                        <div style="float: left">教室:</div><br>
+                                        <div style="float: left">课程2:</div><br>
+                                        <div style="float: left">教室:</div><br>
+                                    </div>
+                                </div>
+                            </el-card>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-card shadow="hover" :body-style="{padding: '0px'}">
+                                <div class="grid-content grid-con-2">
+                                    <i class="el-icon-lx-people grid-con-icon">下午<hr>0节</i>
+                                    <!--                                <div class="grid-con-icon"></div>-->
+                                    <div class="grid-cont-right">
+                                        <div class="grid-num"></div>
+                                        <div style="float: left">课程1:</div><br>
+                                        <div style="float: left">教室:</div><br>
+                                        <div style="float: left">课程2:</div><br>
+                                        <div style="float: left">教室:</div><br>
+                                    </div>
+                                </div>
+                            </el-card>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-card shadow="hover" :body-style="{padding: '0px'}">
+                                <div class="grid-content grid-con-3">
+                                    <i class="el-icon-lx-people grid-con-icon">晚上<hr>0节</i>
+                                    <!--                                <div class="grid-con-icon"></div>-->
+                                    <div class="grid-cont-right">
+                                        <div class="grid-num"></div>
+                                        <div style="float: left">课程1:</div><br>
+                                        <div style="float: left">教室:</div><br>
+                                        <div style="float: left">课程2:</div><br>
+                                        <div style="float: left">教室:</div><br>
+                                    </div>
+                                </div>
+                            </el-card>
+                        </el-col>
+                    </el-row>
+                    <div class="body" style="width: 100%;height: 464px;margin: 0px">
+<!--                    <table border="1px" width="90%" style="height: 300px;position: relative;left: 45px;top: 50px">-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <th colspan="2"></th>-->
+<!--                            <th>星期一</th>-->
+<!--                            <th>星期二</th>-->
+<!--                            <th>星期三</th>-->
+<!--                            <th>星期四</th>-->
+<!--                            <th>星期五</th>-->
+<!--                            <th>星期六</th>-->
+<!--                            <th>星期日</th>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th rowspan="2">上午</th>-->
+<!--                            <td>9:00-10:30</td>-->
+<!--                            <td>语文</td>-->
+<!--                            <td>数学</td>-->
+<!--                            <td>历史</td>-->
+<!--                            <td>化学</td>-->
+<!--                            <td>英语</td>-->
+<!--                            <td>地理</td>-->
+<!--                            <td>政治</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>11:00-11:30</td>-->
+<!--                            <td>语文</td>-->
+<!--                            <td>数学</td>-->
+<!--                            <td>历史</td>-->
+<!--                            <td>化学</td>-->
+<!--                            <td>英语</td>-->
+<!--                            <td>地理</td>-->
+<!--                            <td>政治</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th colspan="9">中午(11:30-14:00)</th>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th rowspan="2">下午</th>-->
+<!--                            <td>14:00-16:30</td>-->
+<!--                            <td>语文</td>-->
+<!--                            <td>数学</td>-->
+<!--                            <td>历史</td>-->
+<!--                            <td>化学</td>-->
+<!--                            <td>英语</td>-->
+<!--                            <td>地理</td>-->
+<!--                            <td>政治</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td>17:00-17:30</td>-->
+<!--                            <td>语文</td>-->
+<!--                            <td>数学</td>-->
+<!--                            <td>历史</td>-->
+<!--                            <td>化学</td>-->
+<!--                            <td>英语</td>-->
+<!--                            <td>地理</td>-->
+<!--                            <td>政治</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th colspan="9">休息</th>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th>晚上</th>-->
+<!--                            <td>19:30-21:00</td>-->
+<!--                            <td>语文</td>-->
+<!--                            <td>数学</td>-->
+<!--                            <td>历史</td>-->
+<!--                            <td>化学</td>-->
+<!--                            <td>英语</td>-->
+<!--                            <td>地理</td>-->
+<!--                            <td>政治</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
                     </div>
-<!--                    <div class="user_skills"style="background-image: url('../../assets/img/blackboard.jpg')">-->
-<!--                    <el-table :show-header="true" :data="tableData" style="width:100%;" border >-->
-<!--                        <el-table-column prop="date" label="" width="40">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="time" label="节次" width="36">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="date1" label="星期一" style="width:10%">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="date2" label="星期二" style="width:10%">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="date3" label="星期三" style="width:10%">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="date4" label="星期四" style="width:10%">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="date5" label="星期五" style="width:10%">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="date5" label="星期六" style="width:10%">-->
-<!--                        </el-table-column>-->
-<!--                        <el-table-column prop="date5" label="星期日" style="width:10%">-->
-<!--                        </el-table-column>-->
-<!--                    </el-table>-->
-<!--                    </div>-->
                 </el-card>
             </el-col>
         </el-row>
@@ -187,11 +184,19 @@
 <script>
 import Schart from 'vue-schart';
 import bus from '../common/bus';
+import store from "../../store";
+
 export default {
     name: 'dashboard',
     data() {
         return {
-            name: localStorage.getItem('ms_username'),
+            weather:{
+                date:'',
+                tem:'',
+                week:'',
+                wea_img:'',
+                air_level:''
+            },
             data: [
                 {
                     name: '2018/09/04',
@@ -271,6 +276,9 @@ export default {
         Schart
     },
     computed: {
+        name(){
+            return store.state.TeacherBean.tea_name === ''?store.state.StudentBean.stu_realname:store.state.TeacherBean.tea_realname
+        },
         role() {
             return this.name === 'admin' ? '超级管理员' : '普通用户';
         }
@@ -286,7 +294,26 @@ export default {
     //     window.removeEventListener('resize', this.renderChart);
     //     bus.$off('collapse', this.handleBus);
     // },
+    created() {
+        this.getWeather()
+    },
     methods: {
+        getWeather(){
+            var ax = this
+            this.$axios({
+                method: "POST",
+                url:"http://localhost:8090/getWeather",
+                // url:"https://tianqiapi.com/api?version=v6&appid=49582358&appsecret=4a1fnLhs&vue=1",
+                data:{}
+            }).then(function(response) {
+                console.log(response)
+                ax.weather.date = response.data.date
+                ax.weather.tem = response.data.tem
+                ax.weather.week = response.data.week
+                ax.weather.wea_img = require('../../assets/img/weather/'+response.data.wea_img+ '.png')
+                ax.weather.air_level = response.data.air_level
+            })
+        },
         changeDate() {
             const now = new Date().getTime();
             this.data.forEach((item, index) => {
@@ -314,7 +341,12 @@ export default {
 
 
 <style scoped>
-  .body{
+/deep/ .el-card__header {
+        padding-top:10px;
+        padding-bottom:5px;
+    }
+
+    .body{
       background: url("../../assets/img/blackboard.jpg") no-repeat 0px 0px;
       background-size: 100% 100%;
   }
@@ -355,11 +387,12 @@ export default {
 }
 
 .grid-con-icon {
-    font-size: 50px;
+    font-size: 20px;
     width: 100px;
     height: 100px;
     text-align: center;
-    line-height: 100px;
+    padding-top: 30px;
+    line-height: 0px;
     color: #fff;
 }
 

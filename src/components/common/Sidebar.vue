@@ -51,11 +51,20 @@
 
 <script>
 import bus from '../common/bus';
+import store from "../../store";
 export default {
     data() {
         return {
             collapse: false,
-            items: [
+
+        };
+    },
+    computed: {
+        onRoutes() {
+            return this.$route.path.replace('/', '');
+        },
+        items(){            //根据登录类型，选择是教师的sidebar还是学生的sidebar
+            return store.state.TeacherBean.tea_name === ''?[
                 {
                     icon: 'el-icon-s-home',
                     index: 'dashboard',
@@ -150,12 +159,57 @@ export default {
                     index: '/PersonalInformation',
                     title: '个人信息'
                 }
+            ]:[                                                 //显示教师或者学生的sidebar
+                {
+                    icon: 'el-icon-s-home',
+                    index: 'dashboard',
+                    title: '个人首页'
+                },
+                {
+                    icon: 'el-icon-user-solid',
+                    index: 'table',
+                    title: '辅导员通知'
+                },
+                {
+                    icon: 'el-icon-office-building',
+                    index: 'tabs',
+                    title: '校园要闻'
+                },
+                {
+                    icon: 'el-icon-s-promotion',
+                    index: '3',
+                    title: '请假',
+                    subs: [
+                        {
+                            index: 'form',
+                            title: '请假单填写'
+                        },
+                        {
+                            index: 'upload',
+                            title: '销假/续假'
+                        },
+                        {
+                            index: '3-2',
+                            title: '请假历史',
+                            subs: [
+                                {
+                                    index: 'editor',
+                                    title: '富文本编辑器'
+                                },
+                                {
+                                    index: 'markdown',
+                                    title: 'markdown编辑器'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    icon: 'el-icon-lx-redpacket_fill',
+                    index: '/PersonalInformation',
+                    title: '个人信息'
+                }
             ]
-        };
-    },
-    computed: {
-        onRoutes() {
-            return this.$route.path.replace('/', '');
         }
     },
     created() {
