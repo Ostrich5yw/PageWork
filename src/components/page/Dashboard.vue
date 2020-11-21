@@ -75,7 +75,7 @@
                         <el-col :span="8">
                             <el-card shadow="hover" :body-style="{padding: '0px'}">
                                 <div class="grid-content grid-con-3">
-                                    <i class="el-icon-lx-people grid-con-icon">晚上<hr>0节</i>
+                                    <i class="el-icon-lx-people grid-con-icon">晚上<hr>节</i>
                                     <!--                                <div class="grid-con-icon"></div>-->
                                     <div class="grid-cont-right">
                                         <div class="grid-num"></div>
